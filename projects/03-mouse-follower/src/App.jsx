@@ -4,6 +4,7 @@ import { FollowMouse } from "./components/FollowMouse";
 
 function App() {
   const [mounted, setMounted] = useState(true);
+
   return (
     <main>
       {mounted && <FollowMouse />}

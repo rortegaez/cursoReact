@@ -5,6 +5,14 @@ export const FollowMouse = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    document.body.classList.toggle("no-cursor", enabled);
+
+    return () => {
+      document.body.classList.remove("no-cursor");
+    };
+  }, [enabled]);
+
+  useEffect(() => {
     console.log("efecto", { enabled });
 
     const handleMove = (event) => {
