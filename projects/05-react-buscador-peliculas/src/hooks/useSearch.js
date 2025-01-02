@@ -19,10 +19,10 @@ export function useSearch() {
 			setError("No se puede realizar una búsqueda solo con números");
 			return;
 		}
-		if (search.length < 3) {
+		/* if (search.length < 3) {
 			setError("La búsqueda debe tener al menos 3 caracteres");
 			return;
-		}
+		} */
 	}, [search]);
 
 	return { search, setSearch, error };

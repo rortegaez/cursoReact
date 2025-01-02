@@ -1,26 +1,23 @@
+import { useState } from "react";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
 import { useSearch } from "./hooks/useSearch";
 
 import "./App.css";
 
-// const API_KEY = "e9717037";
-
 function App() {
-  const { search, setSearch, error } = useSearch();
-  const { movies, getMovies, loading } = useMovies({ search });
+  const [sort, setSort] = useState(false);
 
-  /*
-  DEBES DE ESTUDIAR ESTE CÓDIGO
-const handleSubmit = (event) => {
-    event.preventDefault();
-    const { query } = Object.fromEntries(new window.FormData(event.target));
-    console.log(query);
-  }; */
+  const { search, setSearch, error } = useSearch();
+  const { movies, getMovies, loading } = useMovies({ search, sort });
+
+  const handleSort = () => {
+    setSort(!sort);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    getMovies();
+    getMovies({ search });
   };
 
   const handleChange = (event) => {
@@ -30,6 +27,7 @@ const handleSubmit = (event) => {
     if (newQuery.startsWith(" ")) return;
     setSearch(event.target.value);
   };
+
   return (
     <div className="page">
       <h1>Buscador de Películas</h1>
@@ -41,6 +39,7 @@ const handleSubmit = (event) => {
             name="search"
             placeholder="Avenger, Star Wars..."
           />
+          <input type="checkbox" onChange={handleSort} checked={sort} />
           <button type="submit">Buscar</button>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
