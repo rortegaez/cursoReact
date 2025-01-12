@@ -3,6 +3,8 @@ import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
 import { useSearch } from "./hooks/useSearch";
 
+// import debounce from "just-debounce-it";
+
 import "./App.css";
 
 function App() {
@@ -10,6 +12,14 @@ function App() {
 
   const { search, setSearch, error } = useSearch();
   const { movies, getMovies, loading } = useMovies({ search, sort });
+  /*
+Sirve para retrasar la ejecución de la función y que no busque con cada letra que se escriba.
+  const debounceGetMovies = useCallback(
+    debounce((search) => {
+      getMovies({ search });
+    }, 2000),
+    []
+  ); */
 
   const handleSort = () => {
     setSort(!sort);
@@ -25,7 +35,7 @@ function App() {
     const newQuery = event.target.value;
     // esto es una prevalidación antes de empezar a modificar el estado
     if (newQuery.startsWith(" ")) return;
-    setSearch(event.target.value);
+    setSearch(newQuery);
   };
 
   return (
