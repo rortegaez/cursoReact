@@ -10,6 +10,9 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.26.5",
+    "@babel/preset-react": "^7.26.3",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "standard": "^17.1.2"
   },
   "eslintConfig": {
