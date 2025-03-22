@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useId, useState } from "react";
 import "./filters.css";
 
@@ -46,3 +47,7 @@ export function Filters({ onChange }) {
     </section>
   );
 }
+
+Filters.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};

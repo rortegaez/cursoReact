@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Filters } from "./Filters";
 
 export function Header({ changeFilters }) {
@@ -8,3 +9,7 @@ export function Header({ changeFilters }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  changeFilters: PropTypes.func.isRequired,
+};

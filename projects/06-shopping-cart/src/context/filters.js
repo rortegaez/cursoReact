@@ -1,10 +1,11 @@
+import PropTypes from "prop-types";
 import { createContext } from "react";
 
 //1. Crear el contexto
 export const FiltersContext = createContext()
 
 //2. Crear Provider, para proveer el context
-export function FiltersProvider ({ children}){
+export function FiltersProvider ({ children }){
 	return (
 		<FiltersContext.Provider value={{
 			category: 'all',
@@ -14,4 +15,8 @@ export function FiltersProvider ({ children}){
 			{children}
 		</FiltersContext.Provider>
 	)
+}
+
+FiltersProvider.propTypes = {
+	children: PropTypes.node.isRequired
 }
